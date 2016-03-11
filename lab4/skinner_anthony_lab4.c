@@ -26,10 +26,8 @@ float get_velocity_final(void);     // Prompts user for vf
 float get_acceleration(void);       // Prompts user for a
 float get_time(void);               // Prompts user for t
 
-float vf1, xf1, vf2, xf2;
-/*better add a comment here for
- * safe measure
- */
+
+
 int main(void){
 	//Print welcome message
 	printf("Welcome to the MOTION EQUATION CALCULATOR\n\n");
@@ -47,20 +45,24 @@ int main(void){
 		switch(user_choice){
 			
 			case 1:
-				equation1(&vf1);
-				result = vf1;
+				equation1(&result);
+				//given the initial velocity, accelaration and time, this equation returns 
+				//the final velocity
 				break;
 			case 2:
-				equation2(&xf1);
-				result = xf1;
+				equation2(&result);
+				//given the initial position, initial velocity, time and acceleration, this equation returns
+				// the final position
 				break;
 			case 3:
-				equation3(&vf2);
-				result = vf2;
+				equation3(&result);
+				//given the intial velocity, acceleration, initial and final position, the equation returns	
+				//the final velocity 
 				break;
 			case 4:
-				equation4(&xf2);
-				result = xf2;
+				equation4(&result);
+				//given initial position, final and initial velocity, and time the equation returns
+				//the final position
 				break;
 			case 5:
 				//EXIT PROGRAM IF USER SELECTED QUIT
@@ -74,16 +76,13 @@ int main(void){
 	
 	return 0; //exit with no error
 }
-/*lfaksjd;flkjas
- * lksadjf;laskjdf
- */
 
 int user_menu(){
 	//take in user input
 	int input;
 	do{
 	printf("Choose a motion equation 1-4 or choose 5 to QUIT > ");
-	scanf("%i", &input);
+	scanf("%d", &input);
 		if( input < 1 || input > 5){
 		printf("Invalid Option. Please try again.\n");
 		}
@@ -94,19 +93,14 @@ int user_menu(){
 	return input;
 }
 
-/*lfaksjdf;lakj
- * asdlf;kjas;ldfkj
- * asdf'laskdjf/
- */
+
 void equation1(float* vf){
 	float v = get_velocity_initial();
 	float a = get_acceleration();
 	float t = get_time();
 	*vf = v + a * t;
 }
-/*fa;lskfj;alskjflas
- * sdlfkajs;dlfjk/
- */
+
 void equation2(float* xf){
 	float p = get_position_initial();
 	float v = get_velocity_initial();
@@ -114,8 +108,7 @@ void equation2(float* xf){
 	float a = get_acceleration();
 	*xf = p + v * t + .5 * a * pow(t,2);
 }	
-/*helpful comment 3
- */
+
 
 void equation3(float* vf){
 	float v = get_velocity_initial();
@@ -125,8 +118,7 @@ void equation3(float* vf){
 	*vf = sqrt(pow(v,2)+2*a*(fp-ip));
 }
 
-/*helpful comment 4
- */
+
 void equation4(float* xf){
 	float ip = get_position_initial();
 	float fv = get_velocity_final();
@@ -134,49 +126,42 @@ void equation4(float* xf){
 	float t = get_time();
 	*xf = ip + (.5 * ( fv + iv ) * t);
 }
-/*helpful comment 45
- */
+
 float get_position_initial(void){
 	float iP;
 	printf("\tEnter initial position > ");
 	scanf("%f", &iP);
 	return iP;
 }
-/*comment number 10000
- */
+
 float get_position_final(void){
 	float fP;
 	printf("\tEnter final position > ");
 	scanf("%f", &fP);
 	return fP;
 }
-/*hands are getting arthritis
- */
+
 float get_velocity_initial(void){
 	float iV;
 	printf("\tEnter initial velocity > ");
 	scanf("%f", &iV);
 	return iV;
 }
-/*finger tips bleeding
- */
+
 float get_velocity_final(void){
 	float fV;
 	printf("\tEnter final velocity > ");
 	scanf("%f", &fV);
 	return fV;
 }
-/*but hey at least i have a block comment befor each function
- */
+
 float get_acceleration(void){
 	float ac;
 	printf("\tEnter acceleration > ");
 	scanf("%f", &ac);
 	return ac;
 }
-/*don't mind me
- *I'm just ranting
- */
+
 float get_time(void){
 	float t;
 	printf("\tEnter time > ");
